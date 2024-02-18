@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+
+:root {
+  --dark: #0d0d2b;
+  --white: #ffffff;
+  --white-rgb: 255, 255, 255;
+  --blue: #3671e9;
+  --purple: #2b076e;
+  --purple-rgb: 43, 7, 110;
+  --light-gray: #e0e0e0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+a {
+  color: var(--light-gray);
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--dark);
+  color: var(--white);
+  font-family: "Rubik", sans-serif;
+}
+
+.container {
+  max-width: 1202px;
+  padding-inline: 15px;
+  margin-inline: auto;
+}
+
+.header {
+  max-width: 1202px;
+  padding-inline: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  margin-bottom: 57px;
+  margin-inline: auto;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  align-items: center;
+}
+
+.nav-item {
+  margin-left: 32px;
+}
+
+.nav-link {
+  transition: 0.2s ease color;
+}
+
+.nav-link:hover {
+  color: var(--white);
+}
+
+.nav-item--login {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  margin-left: 56px;
+  padding-right: 24px;
+}
+
+.nav-link--login {
+  font-weight: 500;
+}
+
+.nav-item--register {
+  margin-left: 24px;
+}
+
+.nav-link--register {
+  background-color: var(--blue);
+  padding: 14px 32px;
+  border-radius: 32px;
+  font-weight: 500;
+  transition: 0.2s ease-in background-color;
+}
+
+.nav-link--register:hover {
+  background-color: var(--purple);
+}
+
+.main-section {
+  display: flex;
+  align-items: center;
+}
+
+.main-text {
+  flex: 0 0 600px;
+}
+
+.main-text__sale {
+  background-color: rgba(var(--white-rgb), 0.1);
+  padding: 10px 12px 10px 4px;
+  display: inline-block;
+  border-radius: 32px;
+  margin-bottom: 24px;
+} 
+
+.main-text__sale span {
+  background-color: var(--white);
+  color: var(--dark);
+  padding: 9px 19px;
+  border-radius: 32px;
+  margin-right: 32px;
+  font-weight: 500;
+}
+
+.main-text__title {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.main-text__description {
+  color: var(--light-gray);
+  line-height: 1.6;
+  max-width: 400px;
+  margin-bottom: 57px;
+}
+
+.main-text__link {
+  font-weight: 500;
+  background-color: var(--blue);
+  padding: 20px 30px;
+  border-radius: 32px;
+  transition: 0.2s ease-in background-color;
+}
+
+.main-text__link:hover {
+  background-color: var(--purple);
+}
+
+.main-img {
+  flex-grow: 1;
+}
+
+.main-img__image {
+  flex-grow: 1;
+}
