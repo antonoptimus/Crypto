@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const calcHeadBtn = document.querySelector(".calc-head__btn");
 
   calcHeadBtn.addEventListener("click", function () {
-    const inputValue = parseFloat(calcHeadInput.value);3434
+    const inputValue = parseFloat(calcHeadInput.value);
     const selectValue = calcHeadSelect.value;
 
     if (!isNaN(inputValue)) {
@@ -25,13 +25,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       switch (selectValue) {
         case "th":
-          coefficient = 0.02; 
+          coefficient = 0.2; 
           break;
         case "ph":
-          coefficient = 0.07; 
+          coefficient = 0.7; 
           break;
         case "eh":
-          coefficient = 0.03; 
+          coefficient = 0.3; 
           break;
         default:
           break;
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const revenue = inputValue * coefficient;
       const ethPrice = 275; // Пример текущей цены эфира
       const totalRevenueEth = revenue / ethPrice; // Пересчитываем прибыль в эфирах
-      const totalUsd = totalRevenueEth * 2.911; // Пересчитываем прибыль в доллараъ
+      const totalUsd = totalRevenueEth * 2911; // Пересчитываем прибыль в доллараъ
 
       calcFootTotal.textContent = `${totalRevenueEth.toFixed(8)} ETH ($${totalUsd.toFixed(8)})`;
     } else {
