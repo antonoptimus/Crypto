@@ -1,3 +1,4 @@
+/* Общие стили */
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
 
 :root {
@@ -5,12 +6,14 @@
   --white: #ffffff;
   --white-rgb: 255, 255, 255;
   --blue: #3671e9;
-  --purple: #2b076e;
+  --light-blue: #5b8ae9;
+  --purple: #654cb1;
   --purple-rgb: 43, 7, 110;
   --light-gray: #e0e0e0;
   --gray: #828282;
 }
 
+/* Стили для всех элементов */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -42,15 +45,135 @@ body {
   margin-inline: auto;
 }
 
+/* Стили для навигационной кнопки */
+.nav-btn {
+  display: none;
+}
+
+/* Nav Icon */
+.nav-icon-btn {
+  --time: 0.1s;
+  --width: 40px;
+  --height: 40px;
+  --line-height: 1px;
+  --line-margin: 2;
+  --color: #ffffff;
+  border: none;
+  background-color: transparent;
+  height: var(--height);
+  width: var(--width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-icon {
+  position: relative;
+  width: var(--width);
+  height: var(--line-height);
+  background-color: var(--color);
+}
+
+.nav-icon::before,
+.nav-icon::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  width: var(--width);
+  height: var(--line-height);
+  background-color: var(--color);
+  transition: transform var(--time) ease-in, top var(--time) linear var(--time);
+}
+
+.nav-icon::before {
+  top: calc(var(--line-height) * -8);
+}
+
+.nav-icon::after {
+  top: calc(var(--line-height) * 8);
+}
+
+.nav-icon.nav-icon--active {
+  background-color: transparent;
+}
+
+.nav-icon.nav-icon--active::before,
+.nav-icon.nav-icon--active::after {
+  top: 0;
+  transition: top var(--time) linear, transform var(--time) ease-in var(--time);
+}
+
+.nav-icon.nav-icon--active::before {
+  transform: rotate(45deg);
+}
+
+.nav-icon.nav-icon--active::after {
+  transform: rotate(-45deg);
+}
+
+/* Стили для header */
 .header {
   max-width: 1202px;
   padding-inline: 15px;
   display: flex;
   justify-content: space-between;
-  margin-top: 60px;
+  margin-top: 40px;
   margin-bottom: 57px;
   margin-inline: auto;
   align-items: center;
+}
+
+.header--mobile {
+  position: fixed;
+  background-color: #0d0d2b;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  row-gap: 50px;
+  margin: 0;
+  padding: 15px;
+}
+
+.header--mobile .header-nav {
+  display: block;
+}
+
+.header--mobile .nav-link--register {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-weight: 500;
+}
+
+.header--mobile .nav-item--login {
+  border-right: 0px;
+  margin-left: 32px;
+  padding-right: 0px;
+}
+
+.header--mobile .nav-btn {
+  position: fixed;
+  z-index: 11;
+  right: 15px;
+  top: 40px;
+}
+
+.header--mobile .nav {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  text-align: center;
+}
+
+.header--mobile .nav li {
+  margin-left: 0px;
 }
 
 .nav {
@@ -99,13 +222,14 @@ body {
   background-color: var(--purple);
 }
 
+/* Стили для основного контента */
 .main-section {
   display: flex;
   align-items: center;
 }
 
 .main-text {
-  flex: 0 0 600px;
+  max-width: 620px;
 }
 
 .main-text__sale {
@@ -160,12 +284,12 @@ body {
   width: 100%;
 }
 
-/* stat */
-
+/* Стили для статистики */
 .stat-list {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  gap: 30px;
   padding-top: 200px;
   padding-bottom: 196px;
 }
@@ -199,8 +323,7 @@ body {
   font-weight: 700;
 }
 
-/* calc */
-
+/* Стили для калькулятора */
 .calc-section {
   position: relative;
 }
@@ -226,9 +349,10 @@ body {
 }
 
 .calc {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  position: absolute;
+  box-shadow: 4px 4px 10px -4px rgba(34, 60, 80, 0.2);
 
   background-color: rgba(var(--white-rgb), 0.99);
   color: var(--dark);
@@ -243,6 +367,7 @@ body {
 
 .calc-head {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -272,6 +397,12 @@ body {
   border: none;
   font-weight: 500;
   flex: 0 0 146px;
+  cursor: pointer;
+  transition: 0.2s all ease-in;
+}
+
+.calc-head__btn:hover {
+  background-color: var(--purple);
 }
 
 .calc-foot {
@@ -294,8 +425,7 @@ body {
   color: var(--gray);
 }
 
-/* cards */
-
+/* Стили для карточек */
 .cards-section {
   padding-top: 320px;
   background-color: #f8f9fb;
@@ -312,21 +442,22 @@ body {
 }
 
 .cards {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 57px;
-  justify-content: c;
   gap: 30px;
   text-align: center;
   padding-bottom: 100px;
+  justify-items: center;
 }
 
 .card {
-  max-width: 372px;
+  max-width: 400px;
   background-color: var(--white);
   border-radius: 16px;
   padding: 52px 30px 47px;
   transition: 0.2s all ease-in;
+  box-shadow: 4px 4px 10px -4px rgba(34, 60, 80, 0.2);
 }
 
 .card:hover {
@@ -404,8 +535,7 @@ body {
   transform: scale(0.5);
 }
 
-/* contact */
-
+/* Стили для контактов */
 .contact-section {
   background: linear-gradient(180deg, var(--purple) 0%, var(--dark) 100%);
   padding-block: 88px;
@@ -454,8 +584,8 @@ body {
 }
 
 .form-letter__button {
+  border: 1px solid var(--white);
   cursor: pointer;
-  border: none;
   background-color: var(--white);
   color: var(--dark);
   border-radius: 32px;
@@ -466,13 +596,138 @@ body {
 }
 
 .form-letter__button:hover {
+  border: 1px solid var(--light-gray);
   background-color: var(--purple);
   color: var(--white);
 }
 
+/* Медиа-запросы */
 @media (max-width: 992px) {
-  .cards {
-    flex-direction: column;
-    gap: 30px;
+  .calc {
+    width: 650px;
+    top: 370px;
   }
+
+  .header--mobile {
+    padding-top: 40px;
+  }
+
+  .header--mobile .nav {
+    row-gap: 40px;
+  }
+
+  .header--mobile .nav-link {
+    font-size: 24px;
+  }
+
+  .nav-btn {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .stat-list {
+    padding-block: 70px;
+  }
+
+  .main-section {
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-text__description {
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .main-text {
+    max-width: 100%;
+  }
+
+  .calc-head__select {
+    margin-inline: 15px;
+  }
+
+  .calc-head__btn {
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  }
+
+  .form {
+    flex-direction: column;
+  }
+  .form-text {
+    /* display: none; */
+    flex-direction: column;
+  }
+
+  .form-title {
+    margin-bottom: 20px;
+  }
+
+  .main-img__image {
+    display: none;
+  }
+
+  .form-desc {
+    margin-bottom: 20px;
+  }
+
+  .form-letter {
+    flex-basis: auto;
+  }
+
+  .form-letter__input {
+  }
+
+  .stat-list {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 678px) {
+  .calc {
+    width: 400px;
+    top: 315px;
+    padding: 30px;
+  }
+
+  .card {
+    padding: 15px 10px;
+  }
+
+  .calc-text__desc {
+    display: none;
+  }
+
+  .calc-foot {
+    margin-top: 30px;
+  }
+
+  .cards-title,
+  .calc-text__title {
+    font-size: 32px;
+  }
+
+  .main-text__title {
+    font-size: 50px;
+  }
+
+  .calc-head__select {
+    margin: 20px auto 0 0;
+  }
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+
+.none {
+  display: none;
 }
